@@ -1,8 +1,12 @@
-let interaction = document.querySelector('a:nth-of-type(12)')
+const animateOnEvent = (element, event, animationClass) => {
+  const callbackFunction = () => {
+    element.classList.toggle(animationClass)
+  };
 
-interaction.addEventListener('click', jumpHandler)
-interaction.addEventListener('animationend', jumpHandler)
+  element.addEventListener(event, callbackFunction);
+  element.addEventListener('animationend', callbackFunction);
+};
 
-function jumpHandler() {
-  interaction.classList.toggle('jump')
-}
+animateOnEvent(document.querySelector('a:nth-of-type(10)'),  'click', 'bounce');
+animateOnEvent(document.querySelector('a:nth-of-type(11)'),  'click', 'shake');
+animateOnEvent(document.querySelector('a:nth-of-type(12)'),  'click', 'jump');
